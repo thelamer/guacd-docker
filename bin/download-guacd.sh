@@ -49,6 +49,16 @@ where_is_freerdp() {
 
 curl -L "http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-$VERSION.tar.gz" | tar -xz -C "$BUILD_DIR"
 
+
+#
+# Replace Default JPEG Values
+#
+
+sed -i -e "s/GUAC_COMMON_SURFACE_JPEG_FRAMERATE 3/GUAC_COMMON_SURFACE_JPEG_FRAMERATE $MINFRAMES/g" \
+-e "s/GUAC_SURFACE_JPEG_IMAGE_QUALITY 90/GUAC_SURFACE_JPEG_IMAGE_QUALITY $QUALITY/g" \
+-e "s/GUAC_SURFACE_JPEG_BLOCK_SIZE 16/GUAC_SURFACE_JPEG_BLOCK_SIZE $BLOCKSIZE/g" \
+$BUILD_DIR/guacamole-server-$VERSION/src/common/guac_surface.c
+
 #
 # Build guacamole-server
 #

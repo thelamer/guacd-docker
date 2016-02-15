@@ -31,7 +31,10 @@ MAINTAINER Michael Jumper <mike.jumper@guac-dev.org>
 # Environment variables
 ENV \
     GUAC_VERSION=0.9.9 \
-    LC_ALL=en_US.UTF-8
+    LC_ALL=en_US.UTF-8 \
+    MINFRAMES=0 \
+    QUALITY=10 \
+    BLOCKSIZE=8
 
 # Bring environment up-to-date, install guacamole-server build dependencies
 RUN yum -y update i             && \
